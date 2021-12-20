@@ -8,7 +8,7 @@ DATA NODE MANAGER requires Docker and Node to be installed
 
 
 Install packages
-### `npm install && npm install ./server`
+### `npm install`
 
 
 Run DATA NODE MANAGER
