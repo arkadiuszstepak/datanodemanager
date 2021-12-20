@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TableItem from './TableItem';
 import CheckBox from './CheckBox';
+import HashLoader from "react-spinners/HashLoader";
 
 import { useNodesList } from '../helpers/helpers'
 import { setNodes } from '../store/actions'
@@ -16,31 +17,27 @@ import NodeControlButtons from './NodeControlButtons'
 
 const NodesList = () => {
 
-    const [nodes, getNodesList] = useNodesList(["sd"])
+    const [isLoadingNodes, getNodesList] = useNodesList(["sd"])
     const [selectedNodes, setSelectedNodes] = useState([])
     const dispatch = useDispatch();
     const Nodes = useSelector(state => state.reducer.nodes);
     const accessToken = useSelector(state => state.reducer.accessToken);
 
+    //const [isLoadingNodes,setIsLoadingNodes] = useState(true)
+
     useEffect(() => {
-   
-          setInterval(() => {
-            getNodesList(accessToken)
-            console.log('fire')
-        }, 1000);
-
-
+        const  timer = setInterval(()=> getNodesList(accessToken)
+        ,1000)
+        return () => {
+            clearInterval(timer);
+          };
+       
     },[]);
 
-    useEffect(() => {
-        dispatch(setNodes(nodes));
-    }, [nodes]);
-
+   
 
     return (
         <div className="flex flex-col">
-
-
             <div className="flex justify-between items-center px-10 mb-2 h-20 bg-white border-b rounded-lg-b">
                 <div>
                     {selectedNodes.length > 0 && <NodeControlButtons dockerIds={selectedNodes} />}
@@ -53,8 +50,7 @@ const NodesList = () => {
                 </div>
             </div>
             <div className="p-4 bg-white rounded-lg shadow">
-
-
+               
                 <table className="w-full table-auto">
                     <thead >
                         <tr className="pb-2 font-medium leading-6 text-gray-900">

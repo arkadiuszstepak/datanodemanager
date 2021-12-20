@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { setNodes } from '../store/actions'
+
 
 var randomWords = require('random-words');
 var ethers = require('ethers');
@@ -61,9 +64,11 @@ export const getPublicKey = (privateKey) => {
 
 
 export const useNodesList = () =>{
-    const [data, setData] = useState([]);
+    const [isloading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
 
     const getNodesList = async(accessToken)=>{
+        setIsLoading(true)
         try {
         
         const response = await fetch("/nodeslist", {
@@ -75,14 +80,16 @@ export const useNodesList = () =>{
         })
     
         const NodesList = await response.json();
-        setData(NodesList)
+        dispatch(setNodes(NodesList))
+        setIsLoading(false)
     }catch (err) {
     console.log('Error while fetching nodes list', err);
+    setIsLoading(false)
     }
 
     }
 
-    return [data,getNodesList]
+    return [isloading,getNodesList]
 
 
 }

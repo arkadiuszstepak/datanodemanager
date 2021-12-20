@@ -25,15 +25,21 @@ const NodeDetails = () => {
     });
 
     useEffect(() => {
-        let eventSource = new EventSource(`http://127.0.0.1:8888/logs?id=${Node.dockerId}`)
+        let eventSource = new EventSource(`/logs?id=${Node.dockerId}`)
         eventSource.onmessage = e => setLogs(data => [...data, e.data])
     }, [stats.status])
 
-    useEffect(() => {
-        setInterval(() => {
-            NodeControls.stats({id:Node.dockerId,accessToken:accessToken}).then((stats) => setStats(stats))
-        }, 1000);
-    });
+        useEffect(() => {
+            const  timer = setInterval(()=> NodeControls.stats({id:Node.dockerId,accessToken:accessToken}).then((stats) => setStats(stats))
+            ,1000)
+            return () => {
+                clearInterval(timer);
+              };
+           
+        },[]);
+     
+
+           
     return (
         <div className="flex flex-col">
             <div className="text-gray-500 cursor-pointer hover:text-gray-700"

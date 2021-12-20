@@ -69,8 +69,11 @@ const remove = async (args) => {
         headers: {
             "Content-Type": "application/json",
         }
+       
     })
-    return response
+    const res = await response.json();
+    console.log(response)
+    return res
 }
 
 const stats = async (args) => {

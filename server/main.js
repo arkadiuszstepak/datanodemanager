@@ -51,6 +51,7 @@ app.post('/randomkey',jwt.authenticateJWT, function (req, res) {
 app.get('/logs',DockerApi.logs);
 app.post('/start',jwt.authenticateJWT,DockerApi.start)
 app.post('/stop',jwt.authenticateJWT,DockerApi.stop)
+app.post('/remove',jwt.authenticateJWT,DockerApi.remove)
 app.post('/stats',jwt.authenticateJWT,DockerApi.stats)
 app.post('/changePassword',jwt.authenticateJWT,jwt.changePassword)
 app.post('/newNode',jwt.authenticateJWT,DockerApi.newNode)

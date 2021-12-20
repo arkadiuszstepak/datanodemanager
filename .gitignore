@@ -30,6 +30,9 @@ yarn-error.log*
 /.pnp
 .pnp.js
 
+# nodes config files
+0x*/
+
 # testing
 /coverage
 

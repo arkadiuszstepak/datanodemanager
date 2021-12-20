@@ -187,6 +187,28 @@ const stop = async (req, res) => {
 	});
 
 }
+const remove = async (req, res) => {
+	const containerId = req.body.id;
+	const container = await docker.getContainer(containerId);
+
+
+	
+
+	container.remove(function (err, data) {
+		if (err) {
+			console.log(err)
+			res.send(err)
+		} else {
+
+			NodesList = NodesList.filter(el=>el.DockerId ===containerId)
+			fs.writeFileSync(process.cwd()+"/server/NodesList.json", JSON.stringify(NodesList))
+
+			//res.sendStatus(200);
+			res.send({ status: 'ok' })
+		}
+	});
+
+}
 
 const stats = async (req, res) => {
 	const containerId = req.body.id;
@@ -241,7 +263,6 @@ const newNode = async (req, res) => {
 						dockerId: data["Id"]
 				
 					})
-					console.log('sdfdsfsfsdf')
 					//save nodes list to file 
 					fs.writeFileSync(process.cwd()+"/server/NodesList.json", JSON.stringify(NodesList))
 
@@ -275,6 +296,7 @@ module.exports = {
 	stop,
 	stats,
 	logs,
+	remove,
 	newNode,
 	init,
 	nodes,
