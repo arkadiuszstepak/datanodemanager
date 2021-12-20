@@ -7,6 +7,9 @@ var bodyParser = require("body-parser");
 var cors = require('cors')
 const path = require('path');
 
+var fs = require('fs')
+var http = require('http')
+var https = require('https')
 
 const jwt = require('./JWT.js');
 
@@ -54,33 +57,20 @@ app.post('/newNode',jwt.authenticateJWT,DockerApi.newNode)
 
 console.log(process.env.NODE_ENV)
 
-if(process.env.NODE_ENV === "production"){ 
-	app.use(express.static(path.join(__dirname, '../build')));
+
+app.use(express.static(path.join(__dirname, '../build')));
  
-}
+
 
 const main = async() =>{
 
 	await DockerApi.init(process.cwd()+'/server/NodesList.json');
 
 	
-
-	
 	
 	
 	app.listen(8888);
 	
-	//containerList = await docker.listContainers()
-//	id = containerList[0]["Id"]
-	
-	//container = await docker.getContainer(id) 
-	//console.log(container)
-	
-	
-		
-//  container.attach({stream: true, stdout: true, stderr: true}, function (err, stream) {
- //   stream.pipe(a);
-//  });
 
  
 }

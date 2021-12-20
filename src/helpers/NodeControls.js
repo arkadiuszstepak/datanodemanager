@@ -6,7 +6,7 @@ const useNodesList = () => {
     const getNodesList = async () => {
         try {
 
-            const response = await fetch("http://127.0.0.1:8888/nodeslist", {
+            const response = await fetch("/nodeslist", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const useExec = () => {
 
 
 const stop = async (args) => {
-    const response = await fetch(`http://127.0.0.1:8888/stop`, {
+    const response = await fetch(`/stop`, {
         method: "POST",
         body: JSON.stringify({ id: args.id,accessToken: args.accessToken }),
         headers: {
@@ -51,7 +51,7 @@ const stop = async (args) => {
 
 const start = async (args) => {
     console.log('starting')
-    const response = await fetch(`http://127.0.0.1:8888/start`, {
+    const response = await fetch(`/start`, {
         method: "POST",
         body: JSON.stringify({ id: args.id ,accessToken: args.accessToken }),
         headers: {
@@ -63,7 +63,7 @@ const start = async (args) => {
 }
 
 const remove = async (args) => {
-    const response = await fetch(`http://127.0.0.1:8888/remove`, {
+    const response = await fetch(`/remove`, {
         method: "POST",
         body: JSON.stringify({ id: args.id,accessToken: args.accessToken  }),
         headers: {
@@ -74,7 +74,7 @@ const remove = async (args) => {
 }
 
 const stats = async (args) => {
-    const response = await fetch(`http://127.0.0.1:8888/stats`, {
+    const response = await fetch(`/stats`, {
         method: "POST",
         body: JSON.stringify({ id: args.id,accessToken: args.accessToken  }),
         headers: {
@@ -86,7 +86,7 @@ const stats = async (args) => {
 }
 
 const login = async (password) => {
-    const response = await fetch(`http://127.0.0.1:8888/login`, {
+    const response = await fetch(`/login`, {
         method: "POST",
         body: JSON.stringify({ password: password }),
         headers: {
@@ -98,7 +98,7 @@ const login = async (password) => {
 }
 
 const changePassword = async (args) => {
-    const response = await fetch(`http://127.0.0.1:8888/changePassword`, {
+    const response = await fetch(`/changePassword`, {
         method: "POST",
         body: JSON.stringify({ password: args.passwordHash,accessToken: args.accessToken  }),
         headers: {
@@ -111,7 +111,7 @@ const changePassword = async (args) => {
 
 
 const newNode = async (args) => {
-    const response = await fetch(`http://127.0.0.1:8888/newNode`, {
+    const response = await fetch(`/newNode`, {
         method: "POST",
         body: JSON.stringify({ name: args.name,privateKey:args.privateKey,accessToken:args.accessToken }),
         headers: {

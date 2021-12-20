@@ -27,7 +27,7 @@ export const randomName = () =>{
 
 export const fetchKey = async(accessToken) =>{
  
-    let response = await fetch("http://127.0.0.1:8888/randomkey", {
+    let response = await fetch("/randomkey", {
         method: "POST",
         body: JSON.stringify({accessToken:accessToken}),
         headers: {
@@ -66,7 +66,7 @@ export const useNodesList = () =>{
     const getNodesList = async(accessToken)=>{
         try {
         
-        const response = await fetch("http://127.0.0.1:8888/nodeslist", {
+        const response = await fetch("/nodeslist", {
             method: "POST",
             body : JSON.stringify({accessToken:accessToken}),
             headers: {
