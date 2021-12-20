@@ -1,0 +1,59 @@
+{
+  "name": "datanodemanager",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
+    "datanodemanager": "file:server",
+    "ethereum-qr-code": "^0.3.0",
+    "ethers": "^5.5.2",
+    "install": "^0.13.0",
+    "npm": "^8.3.0",
+    "random-words": "^1.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-ethereum": "^1.0.3",
+    "react-fetch-streams": "^1.1.2",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.3",
+    "react-redux": "^7.2.6",
+    "react-scripts": "5.0.0-next.58",
+    "react-spinners": "^0.11.0"
+
+  },
+  "scripts": {
+    "start-frontend": "react-scripts start",
+    "start-backend": "sudo NODE_ENV=development  node ./server/main.js",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browser": {
+    "crypto": false
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^3.0.1"
+  }
+}
