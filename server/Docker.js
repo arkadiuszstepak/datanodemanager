@@ -241,14 +241,16 @@ const newNode = async (req, res) => {
 						dockerId: data["Id"]
 				
 					})
+					console.log('sdfdsfsfsdf')
 					//save nodes list to file 
 					fs.writeFileSync(process.cwd()+"/server/NodesList.json", JSON.stringify(NodesList))
 
 					//send respond ok and docker container id
-					res.send({ status: 'ok', dockerId: data["Id"]})
+					
 				})
 			
 			})
+			res.send({ status: 'ok'})
 
 		} catch (err) {
 			console.error(err)

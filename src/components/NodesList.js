@@ -23,7 +23,13 @@ const NodesList = () => {
     const accessToken = useSelector(state => state.reducer.accessToken);
 
     useEffect(() => {
-        getNodesList(accessToken)
+   
+          setInterval(() => {
+            getNodesList(accessToken)
+            console.log('fire')
+        }, 1000);
+
+
     },[]);
 
     useEffect(() => {
