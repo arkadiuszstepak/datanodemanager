@@ -12,11 +12,11 @@ Install packages
 
 
 Run DATA NODE MANAGER
-### `npm run start-frontend`
-### `npm run start-backend`
+### `npm run build`
+### `npm run manager`
 
 Visit:
-### http://localhost:3000/
+### http://127.0.0.1:8888/
 
 
 ![1](/screenshots/1.png)
